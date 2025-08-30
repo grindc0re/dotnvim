@@ -93,6 +93,7 @@ vim.diagnostic.config({
 -- ---------------------------------------------------------------------------------
 
 vim.g.mapleader = ','
+vim.g.maplocalleader = ' '
 
 -- Using silent = true mean that the command is not added to the command history.
 vim.api.nvim_set_keymap('n', '<leader>o', ':e ~/.config/nvim/init.lua<cr>', { noremap = true, silent = true })

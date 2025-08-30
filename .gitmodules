@@ -49,3 +49,6 @@
 [submodule "pack/editing/start/cmp-nvim-lsp"]
 	path = pack/editing/start/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule "pack/editing/start/conjure"]
+	path = pack/editing/start/conjure
+	url = https://github.com/Olical/conjure.git
