@@ -1,0 +1,51 @@
+[submodule "pack/nav/start/telescope.nvim"]
+	path = pack/nav/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "pack/nav/start/nvim-tree.lua"]
+	path = pack/nav/start/nvim-tree.lua
+	url = https://github.com/nvim-tree/nvim-tree.lua.git
+[submodule "pack/themes/start/onedark.nvim"]
+	path = pack/themes/start/onedark.nvim
+	url = https://github.com/navarasu/onedark.nvim.git
+[submodule "pack/themes/start/lualine.nvim"]
+	path = pack/themes/start/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git
+[submodule "pack/deps/start/plenary.nvim"]
+	path = pack/deps/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "pack/deps/start/nvim-web-devicons"]
+	path = pack/deps/start/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git
+[submodule "pack/git/start/vim-fugitive"]
+	path = pack/git/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "pack/git/start/vim-gitgutter"]
+	path = pack/git/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "pack/editing/start/quick-scope"]
+	path = pack/editing/start/quick-scope
+	url = https://github.com/unblevable/quick-scope.git
+[submodule "pack/editing/start/markdown-preview.nvim"]
+	path = pack/editing/start/markdown-preview.nvim
+	url = https://github.com/iamcco/markdown-preview.nvim
+[submodule "pack/editing/start/nvim-treesitter"]
+	path = pack/editing/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "pack/editing/start/vim-commentary"]
+	path = pack/editing/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "pack/editing/start/nvim-lspconfig"]
+	path = pack/editing/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "pack/editing/start/nvim-cmp"]
+	path = pack/editing/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "pack/editing/start/mason.nvim"]
+	path = pack/editing/start/mason.nvim
+	url = https://github.com/mason-org/mason.nvim.git
+[submodule "pack/editing/start/cmp-nvim-lsp-signature-help"]
+	path = pack/editing/start/cmp-nvim-lsp-signature-help
+	url = https://github.com/hrsh7th/cmp-nvim-lsp-signature-help.git
+[submodule "pack/editing/start/cmp-nvim-lsp"]
+	path = pack/editing/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
