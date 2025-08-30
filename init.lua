@@ -171,18 +171,19 @@ vim.cmd('highlight QuickScopeSecondary guifg=#5fffff gui=underline ctermfg=40 ct
 -- Lualine
 require('lualine').setup({
   options = {
+    theme = 'onedark',
     -- Do not show statusline in file tree.
     disabled_filetypes = { 'NvimTree' },
     -- Do not show separator between components in the same section.
-    component_separators  = ""
+    component_separators = "",
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding'},
-    lualine_y = {'filetype'},
-    lualine_z = {'progress', 'location'}
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding' },
+    lualine_y = { 'filetype' },
+    lualine_z = { 'progress', 'location' }
   },
 })
 
