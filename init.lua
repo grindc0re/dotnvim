@@ -125,6 +125,9 @@ vim.api.nvim_set_keymap('i', '<c-u>', '<c-r>=trim(system("uuidgen"))<cr>', { nor
 -- Show documentation for the objects under the cursor.
 vim.api.nvim_set_keymap('n', 'K', ':lua vim.lsp.buf.hover()<cr>', { noremap = true, silent = true})
 
+-- Show diagnostic popup.
+vim.api.nvim_set_keymap('n', '<leader>d', ':lua vim.diagnostic.open_float()<cr>', { noremap = true, silent = true})
+
 -- ---------------------------------------------------------------------------------
 -- Autocommands
 -- ---------------------------------------------------------------------------------
