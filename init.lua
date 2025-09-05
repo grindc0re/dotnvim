@@ -128,6 +128,15 @@ vim.api.nvim_set_keymap('n', 'K', ':lua vim.lsp.buf.hover()<cr>', { noremap = tr
 
 -- Show diagnostic popup.
 vim.api.nvim_set_keymap('n', '<leader>d', ':lua vim.diagnostic.open_float()<cr>', { noremap = true, silent = true})
+--
+-- Disable the documentation mapping
+vim.g["conjure#mapping#doc_word"] = false
+
+-- Rebind it from K to <prefix>gk
+vim.g["conjure#mapping#doc_word"] = "gk"
+
+-- Reset it to the default unprefixed K (note the special table wrapped syntax)
+vim.g["conjure#mapping#doc_word"] = {"K"}
 
 -- ---------------------------------------------------------------------------------
 -- Autocommands
