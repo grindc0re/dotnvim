@@ -261,7 +261,6 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
      -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<cr>'] = cmp.mapping.confirm({ select = true }),
     ['<tab>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
