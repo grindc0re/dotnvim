@@ -262,6 +262,9 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
+-- LSP-related keymaps.
+vim.api.nvim_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<cr>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>', { noremap = true, silent = true})
 
 -- Enable language servers.
 -- See here for names -->> https://github.com/neovim/nvim-lspconfig
