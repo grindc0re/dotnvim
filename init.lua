@@ -205,13 +205,21 @@ vim.g.gitgutter_sign_removed = '_'
 -- Telescope
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
+
+local telescope_buffers = function () 
+  -- List buffers in last used order and ignore the current file
+  -- to be able to jump between two files.
+  builtin.buffers({ sort_lastused = true, ignore_current_buffer = true })
+end
+
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>sb', telescope_buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
 
 -- For muscle memory
-vim.keymap.set('n', 'gb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', 'gb', telescope_buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope files' })
 
 -- Navigate between matches using ctrl+j/k
