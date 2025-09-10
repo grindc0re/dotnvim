@@ -256,48 +256,57 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<tab>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<tab>"] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_signature_help' }
+    { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
   }, {
-    { name = 'buffer' },
-  })
+    { name = "buffer" },
+  }),
 })
 -- LSP-related keymaps.
-vim.api.nvim_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<cr>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "gd", ":lua vim.lsp.buf.definition()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gD", ":lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true })
 
 -- Enable language servers.
 -- See here for names -->> https://github.com/neovim/nvim-lspconfig
-vim.lsp.enable({ 
-  'pyright',
-  'cssls',
-  'djlsp',
-  'docker_compose_language_service',
-  'dockerls',
-  'html',
-  'htmx',
-  'jsonls',
-  'ruff',
-  'tailwindcss',
+vim.lsp.enable({
+  "pyright",
+  "cssls",
+  "djlsp",
+  "docker_compose_language_service",
+  "dockerls",
+  "html",
+  "htmx",
+  "jsonls",
+  "ruff",
+  "tailwindcss",
 })
 
 -- Autoformat on save
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
-  callback = function(args)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = args.buf,
-      callback = function()
-        vim.lsp.buf.format({async = false, id = args.data.client_id })
-      end,
-    })
-  end
+require("conform").setup({
+  formatters_by_ft = {
+    python = { "ruff_fix", "ruff_organize_imports" },
+    rust = { "rustfmt", lsp_format = "fallback" },
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+    html = { "djhtml" },
+    htmldjango = { "djhtml" },
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = "fallback",
+  },
+  formatters = {
+    djhtml = {
+      command = "djhtml",
+      args = { "--tabwidth", "2", "$FILENAME" },
+      stdin = false,
+    },
+  },
 })

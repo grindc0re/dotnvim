@@ -52,3 +52,6 @@
 [submodule "pack/editing/start/conjure"]
 	path = pack/editing/start/conjure
 	url = https://github.com/Olical/conjure.git
+[submodule "pack/editing/start/conform.nvim"]
+	path = pack/editing/start/conform.nvim
+	url = https://github.com/stevearc/conform.nvim.git
