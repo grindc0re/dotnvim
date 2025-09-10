@@ -55,3 +55,12 @@
 [submodule "pack/editing/start/conform.nvim"]
 	path = pack/editing/start/conform.nvim
 	url = https://github.com/stevearc/conform.nvim.git
+[submodule "pack/editing/start/LuaSnip"]
+	path = pack/editing/start/LuaSnip
+	url = https://github.com/L3MON4D3/LuaSnip.git
+[submodule "pack/editing/start/cmp_luasnip"]
+	path = pack/editing/start/cmp_luasnip
+	url = https://github.com/saadparwaiz1/cmp_luasnip.git
+[submodule "pack/editing/start/vim-snippets"]
+	path = pack/editing/start/vim-snippets
+	url = https://github.com/honza/vim-snippets.git

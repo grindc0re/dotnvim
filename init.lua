@@ -246,13 +246,17 @@ require("telescope").setup{
 -- Mason
 require('mason').setup()
 
+-- LuaSnip
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
+
 -- nvim-cmp - LSP
 local cmp = require('cmp')
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -266,6 +270,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "nvim_lsp_signature_help" },
+    { name = "luasnip" },
   }, {
     { name = "buffer" },
   }),
