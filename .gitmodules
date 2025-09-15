@@ -64,3 +64,6 @@
 [submodule "pack/editing/start/vim-snippets"]
 	path = pack/editing/start/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "pack/editing/start/sleuth"]
+	path = pack/editing/start/sleuth
+	url = https://tpope.io/vim/sleuth.git
