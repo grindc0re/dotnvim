@@ -332,3 +332,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
   desc = 'LSP: Disable hover capability from Ruff',
 })
+
+-- Indent blankline
+require('ibl').setup({ scope = { enabled = true }})

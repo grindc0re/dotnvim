@@ -67,3 +67,6 @@
 [submodule "pack/editing/start/sleuth"]
 	path = pack/editing/start/sleuth
 	url = https://tpope.io/vim/sleuth.git
+[submodule "pack/editing/start/indent-blankline.nvim"]
+	path = pack/editing/start/indent-blankline.nvim
+	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
