@@ -49,7 +49,7 @@ vim.o.list = true
 vim.o.listchars = 'trail:·,tab:» ,'
 
 -- Clipboard.
-vim.o.clipboard = 'unnamed,unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 
 -- Default tab settings, prefer language specific indentation settings.
 vim.o.tabstop = 2
@@ -299,14 +299,14 @@ vim.lsp.enable({
 -- Autoformat on save
 require("conform").setup({
   formatters_by_ft = {
-    python = { "ruff_fix", "ruff_organize_imports" },
+    python = { "ruff", "ruff_organize_imports" },
     rust = { "rustfmt", lsp_format = "fallback" },
     javascript = { "prettierd", "prettier", stop_after_first = true },
     html = { "djhtml" },
     htmldjango = { "djhtml" },
   },
   format_on_save = {
-    timeout_ms = 500,
+    timeout_ms = 5000,
     lsp_format = "fallback",
   },
   formatters = {
