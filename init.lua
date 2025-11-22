@@ -280,6 +280,7 @@ cmp.setup({
 -- LSP-related keymaps.
 vim.api.nvim_set_keymap("n", "gd", ":lua vim.lsp.buf.definition()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gD", ":lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>", { noremap = true, silent = true })
 
 -- Enable language servers.
 -- See here for names -->> https://github.com/neovim/nvim-lspconfig
@@ -289,6 +290,7 @@ vim.lsp.enable({
   "djlsp",
   "docker_compose_language_service",
   "dockerls",
+  "ts_ls",
   "html",
   "htmx",
   "jsonls",
@@ -299,9 +301,10 @@ vim.lsp.enable({
 -- Autoformat on save
 require("conform").setup({
   formatters_by_ft = {
-    python = { "ruff", "ruff_organize_imports" },
+    python = { "black", "isort" },
     rust = { "rustfmt", lsp_format = "fallback" },
     javascript = { "prettierd", "prettier", stop_after_first = true },
+    typescriptreact = { "prettierd", "prettier", stop_after_first = true },
     html = { "djhtml" },
     htmldjango = { "djhtml" },
   },
