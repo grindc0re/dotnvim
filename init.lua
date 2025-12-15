@@ -51,14 +51,30 @@ vim.o.listchars = 'trail:·,tab:» ,'
 -- Clipboard.
 vim.o.clipboard = 'unnamedplus'
 
+-- Hightlight yanked text.
+vim.cmd("autocmd TextYankPost * silent! lua vim.hl.on_yank {higroup='Visual', timeout=300}")
+
 -- Default tab settings, prefer language specific indentation settings.
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
-vim.o.autoindent = false
-vim.o.smartindent = false
+vim.o.autoindent = true
+vim.o.smartindent = true
 vim.cmd('filetype plugin indent on')
+
+-- Disable the builtin python settings, it overindents.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    -- kill the runtime python indentexpr
+    vim.opt_local.indentexpr = ""
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+  end,
+})
 
 -- Set updatetime to speed up gitgutter hints.
 vim.o.updatetime = 100
