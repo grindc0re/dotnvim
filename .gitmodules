@@ -49,9 +49,6 @@
 [submodule "pack/editing/start/cmp-nvim-lsp"]
 	path = pack/editing/start/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
-[submodule "pack/editing/start/conjure"]
-	path = pack/editing/start/conjure
-	url = https://github.com/Olical/conjure.git
 [submodule "pack/editing/start/conform.nvim"]
 	path = pack/editing/start/conform.nvim
 	url = https://github.com/stevearc/conform.nvim.git
@@ -70,3 +67,21 @@
 [submodule "pack/editing/start/indent-blankline.nvim"]
 	path = pack/editing/start/indent-blankline.nvim
 	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
+[submodule "pack/themes/start/nordic.nvim"]
+	path = pack/themes/start/nordic.nvim
+	url = https://github.com/AlexvZyl/nordic.nvim.git
+[submodule "pack/editing/start/vlime"]
+	path = pack/editing/start/vlime
+	url = https://github.com/vlime/vlime.git
+[submodule "pack/editing/start/nvim-parinfer"]
+	path = pack/editing/start/nvim-parinfer
+	url = https://github.com/gpanders/nvim-parinfer.git
+[submodule "pack/editing/start/--force"]
+	path = pack/editing/start/--force
+	url = https://github.com/Olical/conjure.git
+[submodule "pack/editing/start/vim-fennel"]
+	path = pack/editing/start/vim-fennel
+	url = https://github.com/atweiden/vim-fennel.git
+[submodule "pack/themes/start/vim"]
+	path = pack/themes/start/vim
+	url = https://github.com/nordtheme/vim.git
