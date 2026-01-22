@@ -83,10 +83,21 @@ vim.o.updatetime = 100
 -- Themes and colors
 -- ---------------------------------------------------------------------------------
 
+-- Nordic
+require('nordic').setup({
+  italic_comments=false,
+    on_highlight = function(highlights, palette)
+      highlights.Comment = {
+        fg = palette.magenta.bright,
+        italic = false,
+        underline = false,
+      }
+    end
+})
 -- Use 24bit colors.
 vim.o.termguicolors = true
 vim.cmd('syntax enable')
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme nordic')
 
 -- Diagnostic errors in signcolumn
 vim.diagnostic.config({
@@ -155,6 +166,8 @@ vim.g["conjure#mapping#doc_word"] = "gk"
 
 -- Reset it to the default unprefixed K (note the special table wrapped syntax)
 -- vim.g["conjure#mapping#doc_word"] = {"K"}
+vim.g["conjure#filetype#fennel"] = "conjure.client.fennel.stdio"
+vim.g["conjure#filetype#fennel#stdio#command"] = "love /home/jovi501/Code/tega/"
 
 -- ---------------------------------------------------------------------------------
 -- Autocommands
@@ -199,7 +212,7 @@ vim.cmd('highlight QuickScopeSecondary guifg=#5fffff gui=underline ctermfg=40 ct
 -- Lualine
 require('lualine').setup({
   options = {
-    theme = 'onedark',
+    theme = 'nordic',
     -- Do not show statusline in file tree.
     disabled_filetypes = { 'NvimTree' },
     -- Do not show separator between components in the same section.
@@ -317,7 +330,7 @@ vim.lsp.enable({
 -- Autoformat on save
 require("conform").setup({
   formatters_by_ft = {
-    python = { "black", "isort" },
+    python = { "ruff_format" },
     rust = { "rustfmt", lsp_format = "fallback" },
     javascript = { "prettierd", "prettier", stop_after_first = true },
     typescriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -326,7 +339,7 @@ require("conform").setup({
   },
   format_on_save = {
     timeout_ms = 5000,
-    lsp_format = "fallback",
+    lsp_format = "never",
   },
   formatters = {
     djhtml = {
@@ -354,3 +367,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Indent blankline
 require('ibl').setup({ scope = { enabled = true }})
+
+-- Vlime
+vim.cmd("set runtimepath+=$HOME/.config/nvim/pack/editing/start/vlime/vim")
