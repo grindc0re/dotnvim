@@ -79,6 +79,3 @@
 [submodule "pack/editing/start/--force"]
 	path = pack/editing/start/--force
 	url = https://github.com/Olical/conjure.git
-[submodule "pack/themes/start/vim"]
-	path = pack/themes/start/vim
-	url = https://github.com/nordtheme/vim.git
