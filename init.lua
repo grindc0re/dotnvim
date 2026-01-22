@@ -276,6 +276,15 @@ require("telescope").setup{
 
 -- Mason
 require('mason').setup()
+require('mason-nvim-dap').setup({
+  ensure_installed = { "python" },
+  automatic_installation = true,
+  handlers = {
+    function(config)
+      require("mason-nvim-dap").default_setup(config)
+    end,
+  },
+})
 
 -- LuaSnip
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -370,3 +379,130 @@ require('ibl').setup({ scope = { enabled = true }})
 
 -- Vlime
 vim.cmd("set runtimepath+=$HOME/.config/nvim/pack/editing/start/vlime/vim")
+
+-- nvim-dap and nvim-dap-ui
+require("dapui").setup({
+  controls = {
+    element = "repl",
+    enabled = true,
+    icons = {
+      disconnect = "",
+      pause = "",
+      play = "",
+      run_last = "",
+      step_back = "",
+      step_into = "",
+      step_out = "",
+      step_over = "",
+      terminate = "",
+      breakpoint = ""
+    }
+  },
+  element_mappings = {},
+  expand_lines = true,
+  floating = {
+    border = "single",
+    mappings = {
+      close = { "q", "<Esc>" }
+    }
+  },
+  force_buffers = true,
+  icons = {
+    collapsed = "",
+    current_frame = "",
+    expanded = ""
+  },
+  layouts = { {
+    elements = { 
+      {
+        id = "breakpoints",
+        size = 0.25
+      },
+      {
+        id = "stacks",
+        size = 0.25
+      },
+      {
+        id = "watches",
+        size = 0.25
+      },
+      {
+        id = "scopes",
+        size = 0.25
+      },
+    },
+    position = "left",
+    size = 40
+  },
+  {
+    elements = {
+      {
+        id = "repl",
+        size = 0.5
+      },
+      {
+        id = "console",
+        size = 0.5
+      }
+    },
+    position = "bottom",
+    size = 10
+  } 
+},
+mappings = {
+  edit = "e",
+  expand = { "<CR>", "<2-LeftMouse>" },
+  open = "o",
+  remove = "d",
+  repl = "r",
+  toggle = "t"
+},
+render = {
+  indent = 1,
+  max_value_lines = 100
+}
+})
+
+local dap = require('dap')
+local ui = require('dapui')
+
+-- Add lifecycle listeners to automatically open and close the ui.
+dap.listeners.before.attach.dapui_config = function()
+	ui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+	ui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+	ui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+	ui.close()
+end
+
+-- Debugging configurations
+dap.configurations.python = {
+  -- Regular python file, started with e.g. 'python main.py'
+  {
+    type = 'python';
+    request = 'launch';
+    name = "Launch file";
+    program = "${file}";
+    pythonPath = function()
+      return '${workspaceFolder}/.venv/bin//python'
+    end;
+  },
+}
+
+-- nvim-dap keymaps
+vim.api.nvim_set_keymap("n", "<F3>", ":lua require('dapui').toggle()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<F5>", ":lua require('dap').continue()<cr>", { noremap = true, silent = true })
+-- F17 is Shift-F5
+vim.api.nvim_set_keymap("n", "<F17>", ":lua require('dap').terminate()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<F9>", ":lua require('dap').toggle_breakpoint()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<F10>", ":lua require('dap').step_over()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<F11>", ":lua require('dap').step_into()<cr>", { noremap = true, silent = true })
+
+-- Debugger signs
+vim.fn.sign_define("DapBreakpoint", { text = "⬤", texthl = 'DiagnosticError' })
+vim.fn.sign_define("DapStopped", { text = "⮞" , texthl = 'DiagnosticWarn' })

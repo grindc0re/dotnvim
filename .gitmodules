@@ -70,12 +70,15 @@
 [submodule "pack/themes/start/nordic.nvim"]
 	path = pack/themes/start/nordic.nvim
 	url = https://github.com/AlexvZyl/nordic.nvim.git
-[submodule "pack/editing/start/vlime"]
-	path = pack/editing/start/vlime
-	url = https://github.com/vlime/vlime.git
-[submodule "pack/editing/start/nvim-parinfer"]
-	path = pack/editing/start/nvim-parinfer
-	url = https://github.com/gpanders/nvim-parinfer.git
-[submodule "pack/editing/start/--force"]
-	path = pack/editing/start/--force
-	url = https://github.com/Olical/conjure.git
+[submodule "pack/debug/start/nvim-dap"]
+	path = pack/debug/start/nvim-dap
+	url = https://codeberg.org/mfussenegger/nvim-dap.git
+[submodule "pack/debug/start/nvim-dap-ui"]
+	path = pack/debug/start/nvim-dap-ui
+	url = https://github.com/rcarriga/nvim-dap-ui.git
+[submodule "pack/deps/start/nvim-nio"]
+	path = pack/deps/start/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio.git
+[submodule "pack/debug/start/mason-nvim-dap.nvim"]
+	path = pack/debug/start/mason-nvim-dap.nvim
+	url = https://github.com/jay-babu/mason-nvim-dap.nvim.git
