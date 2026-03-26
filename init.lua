@@ -64,17 +64,17 @@ vim.o.smartindent = true
 vim.cmd('filetype plugin indent on')
 
 -- Disable the builtin python settings, it overindents.
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    -- kill the runtime python indentexpr
-    vim.opt_local.indentexpr = ""
-    vim.opt_local.expandtab = true
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
-    vim.opt_local.softtabstop = 4
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "python",
+--   callback = function()
+--     -- kill the runtime python indentexpr
+--     vim.opt_local.indentexpr = ""
+--     vim.opt_local.expandtab = true
+--     vim.opt_local.shiftwidth = 4
+--     vim.opt_local.tabstop = 4
+--     vim.opt_local.softtabstop = 4
+--   end,
+-- })
 
 -- Set updatetime to speed up gitgutter hints.
 vim.o.updatetime = 100
@@ -249,7 +249,7 @@ local actions = require('telescope.actions')
 local telescope_buffers = function () 
   -- List buffers in last used order and ignore the current file
   -- to be able to jump between two files.
-  builtin.buffers({ sort_lastused = true, ignore_current_buffer = true })
+  builtin.buffers({ sort_mru = true, sort_lastused = true, ignore_current_buffer = true })
 end
 
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Telescope find files' })
@@ -333,13 +333,14 @@ vim.lsp.enable({
   "htmx",
   "jsonls",
   "ruff",
+  "rust_analyzer",
   "tailwindcss",
 })
 
 -- Autoformat on save
 require("conform").setup({
   formatters_by_ft = {
-    python = { "ruff_format" },
+    python = { "ruff_format", "ruff_fix" },
     rust = { "rustfmt", lsp_format = "fallback" },
     javascript = { "prettierd", "prettier", stop_after_first = true },
     typescriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -438,12 +439,12 @@ require("dapui").setup({
     elements = {
       {
         id = "repl",
-        size = 0.5
+        size = 1.0
       },
-      {
-        id = "console",
-        size = 0.5
-      }
+      -- {
+      --   id = "console",
+      --   size = 0.5
+      -- }
     },
     position = "bottom",
     size = 10
@@ -486,7 +487,7 @@ dap.configurations.python = {
   {
     type = 'python';
     request = 'launch';
-    name = "Launch file";
+    name = "Launch python file";
     program = "${file}";
     pythonPath = function()
       return '${workspaceFolder}/.venv/bin//python'
