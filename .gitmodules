@@ -82,3 +82,6 @@
 [submodule "pack/debug/start/mason-nvim-dap.nvim"]
 	path = pack/debug/start/mason-nvim-dap.nvim
 	url = https://github.com/jay-babu/mason-nvim-dap.nvim.git
+[submodule "pack/themes/start/nvim"]
+	path = pack/themes/start/nvim
+	url = https://github.com/catppuccin/nvim.git

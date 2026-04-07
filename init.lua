@@ -236,7 +236,7 @@ require('nvim-tree').setup()
 
 -- Gitgutter
 vim.o.signcolumn = 'yes'
-gitgutter_set_sign_backgrounds=1
+gitgutter_set_sign_backgrounds=0
 vim.g.gitgutter_sign_added = '│'
 vim.g.gitgutter_sign_modified = '│'
 vim.g.gitgutter_sign_modified_removed = '│'
@@ -249,7 +249,7 @@ local actions = require('telescope.actions')
 local telescope_buffers = function () 
   -- List buffers in last used order and ignore the current file
   -- to be able to jump between two files.
-  builtin.buffers({ sort_mru = true, sort_lastused = true, ignore_current_buffer = true })
+  builtin.buffers({ sort_lastused = true, ignore_current_buffer = true })
 end
 
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Telescope find files' })
@@ -257,6 +257,7 @@ vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>sb', telescope_buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics' })
+vim.keymap.set('n', '<leader>sc', builtin.live_grep, { desc = 'Telescope continue/resume' })
 
 -- For muscle memory
 vim.keymap.set('n', 'gb', telescope_buffers, { desc = 'Telescope buffers' })
