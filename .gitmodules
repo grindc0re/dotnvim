@@ -85,3 +85,6 @@
 [submodule "pack/themes/start/nvim"]
 	path = pack/themes/start/nvim
 	url = https://github.com/catppuccin/nvim.git
+[submodule "pack/themes/start/alabaster.nvim"]
+	path = pack/themes/start/alabaster.nvim
+	url = https://github.com/dchinmay2/alabaster.nvim.git
