@@ -84,20 +84,15 @@ vim.o.updatetime = 100
 -- ---------------------------------------------------------------------------------
 
 -- Nordic
-require('nordic').setup({
-  italic_comments=false,
-    on_highlight = function(highlights, palette)
-      highlights.Comment = {
-        fg = palette.magenta.bright,
-        italic = false,
-        underline = false,
-      }
-    end
-})
 -- Use 24bit colors.
 vim.o.termguicolors = true
 vim.cmd('syntax enable')
-vim.cmd('colorscheme nordic')
+vim.cmd('set background=dark')
+vim.cmd('colorscheme default')
+
+-- Improve the default theme
+vim.cmd('hi WinSeparator guifg=#333333')
+vim.cmd('hi! link diffAdded @diff.plus')
 
 -- Diagnostic errors in signcolumn
 vim.diagnostic.config({
@@ -210,9 +205,17 @@ vim.cmd('highlight QuickScopePrimary guifg=#afff5f gui=underline ctermfg=40 cter
 vim.cmd('highlight QuickScopeSecondary guifg=#5fffff gui=underline ctermfg=40 cterm=underline')
 
 -- Lualine
+local custom_default = require('lualine.themes.auto')
+
+-- Set the bg in the middle of the line to the normal background.
+custom_default.command.c.bg = custom_default.normal.b.bg
+custom_default.insert.c.bg = custom_default.normal.b.bg
+custom_default.normal.c.bg = custom_default.normal.b.bg
+custom_default.visual.c.bg = custom_default.normal.b.bg
+
 require('lualine').setup({
   options = {
-    theme = 'nordic',
+    theme = custom_default,
     -- Do not show statusline in file tree.
     disabled_filetypes = { 'NvimTree' },
     -- Do not show separator between components in the same section.
@@ -272,6 +275,7 @@ require("telescope").setup{
         ["<c-k>"] = actions.move_selection_previous,
       },
     },
+    layout_strategy = "vertical",
   }
 }
 
@@ -377,7 +381,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Indent blankline
-require('ibl').setup({ scope = { enabled = true }})
+require('ibl').setup({ 
+  indent = {
+          char = "│",
+          tab_char = "│",
+        },
+  scope = { enabled = true }
+})
 
 -- Vlime
 vim.cmd("set runtimepath+=$HOME/.config/nvim/pack/editing/start/vlime/vim")
