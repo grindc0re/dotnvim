@@ -91,8 +91,14 @@ vim.cmd('set background=dark')
 vim.cmd('colorscheme default')
 
 -- Improve the default theme
+vim.cmd('hi Normal guibg=none ctermbg=none')
+vim.cmd('hi NormalNC guibg=none ctermbg=none')
+vim.cmd('hi StatusLine guibg=none ctermbg=none')
+vim.cmd('hi StatusLineNC guibg=none ctermbg=none')
 vim.cmd('hi WinSeparator guifg=#333333')
 vim.cmd('hi! link diffAdded @diff.plus')
+vim.cmd('hi! link GitGutterAdd @diff.plus')
+vim.cmd('hi! link GitGutterChange DiagnosticWarn')
 
 -- Diagnostic errors in signcolumn
 vim.diagnostic.config({
@@ -208,10 +214,17 @@ vim.cmd('highlight QuickScopeSecondary guifg=#5fffff gui=underline ctermfg=40 ct
 local custom_default = require('lualine.themes.auto')
 
 -- Set the bg in the middle of the line to the normal background.
-custom_default.command.c.bg = custom_default.normal.b.bg
-custom_default.insert.c.bg = custom_default.normal.b.bg
-custom_default.normal.c.bg = custom_default.normal.b.bg
-custom_default.visual.c.bg = custom_default.normal.b.bg
+custom_default.command.c.bg = "NONE"
+custom_default.insert.c.bg = "NONE"
+custom_default.normal.c.bg = "NONE"
+custom_default.visual.c.bg = "NONE"
+custom_default.command.b.bg = "#333333"
+-- custom_default.normal.b.fg = "#B3F6C0"
+custom_default.normal.a.fg = "#cccccc"
+custom_default.normal.b.fg = "#cccccc"
+custom_default.insert.b.bg = "#333333"
+custom_default.normal.b.bg = "#333333"
+custom_default.visual.b.bg = "#333333"
 
 require('lualine').setup({
   options = {
@@ -276,6 +289,11 @@ require("telescope").setup{
       },
     },
     layout_strategy = "vertical",
+    layout_config = {
+      vertical = {
+        preview_height = 0
+      }
+    }
   }
 }
 
