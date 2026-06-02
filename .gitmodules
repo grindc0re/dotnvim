@@ -88,3 +88,6 @@
 [submodule "pack/themes/start/alabaster.nvim"]
 	path = pack/themes/start/alabaster.nvim
 	url = https://github.com/dchinmay2/alabaster.nvim.git
+[submodule "pack/editing/start/codex.nvim"]
+	path = pack/editing/start/codex.nvim
+	url = https://codeberg.org/yaadata/codex.nvim.git
