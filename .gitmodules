@@ -91,6 +91,3 @@
 [submodule "pack/editing/start/codex.nvim"]
 	path = pack/editing/start/codex.nvim
 	url = https://codeberg.org/yaadata/codex.nvim.git
-[submodule "pack/editing/start/nvim-ts-autotag"]
-	path = pack/editing/start/nvim-ts-autotag
-	url = https://github.com/windwp/nvim-ts-autotag.git
