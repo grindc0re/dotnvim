@@ -28,9 +28,6 @@
 [submodule "pack/editing/start/markdown-preview.nvim"]
 	path = pack/editing/start/markdown-preview.nvim
 	url = https://github.com/iamcco/markdown-preview.nvim
-[submodule "pack/editing/start/nvim-treesitter"]
-	path = pack/editing/start/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "pack/editing/start/vim-commentary"]
 	path = pack/editing/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
